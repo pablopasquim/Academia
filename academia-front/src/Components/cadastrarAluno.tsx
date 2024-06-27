@@ -9,7 +9,7 @@ function CadastrarAluno(){
     const [peso, setPeso] = useState<number>(0);
     const [altura, setAltura] = useState<number>(0);
 
-    function handleSubmite (e: any){
+    function handleSubmit (e: any){
         e.preventDefault();
 
         const newAluno = {
@@ -40,7 +40,30 @@ function CadastrarAluno(){
         .catch(erro => {
             console.error('Erro', erro);
         });
+        return (
+            <div>
+                <h2>Cadastrar Novo Produto</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Nome:
+                        <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
+                    </label>
+                    <label>
+                        Descrição:
+                        <input type="text" value={idade} onChange={e => setIdade(Number(e.target.value))} required />
+                    </label>
+                    <label>
+                        Preço:
+                        <input type="number" value={peso} onChange={e => setPeso(Number(e.target.value))} required />
+                    </label>
+                    <label>
+                        Quantidade:
+                        <input type="number" value={altura} onChange={e => setAltura(Number(e.target.value))} required />
+                    </label>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        );
     };
-
-
-}
+};
+export default CadastrarAluno;

@@ -22,7 +22,7 @@ const BuscarAlunos: React.FC = () => {
 
     return (
         <div>
-            <h1>Lista de Produtos</h1>
+            <h1>Lista de Alunos</h1>
             <table border={1}>
                 <thead>
                     <tr>

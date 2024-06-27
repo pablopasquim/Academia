@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { Aluno } from "../Interface/Aluno";
-import { METHODS } from 'http';
-import { error } from 'console';
 
-function CadastrarAluno(){
+const CadastrarAluno: React.FC = () => {
     const [nome, setNome] = useState<string>('');
     const [idade, setIdade] = useState<number>(0);
     const [peso, setPeso] = useState<number>(0);
     const [altura, setAltura] = useState<number>(0);
 
-    function handleSubmit (e: any){
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         const newAluno = {
@@ -18,52 +15,57 @@ function CadastrarAluno(){
             peso,
             altura
         };
-        fetch('http://localhost:5024/academia/alunos/cadastrar',{
+
+        fetch('http://localhost:5024/academia/alunos/cadastrar', {
             method: 'POST',
             headers: {
-                'Content-Type': 'apliication/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(newAluno)
-            })
-        .then(response =>{
-            if(!response.ok){
+        })
+        .then(response => {
+            if (!response.ok) {
                 throw new Error('Erro na requisição: ' + response.statusText);
             }
             return response.json();
         })
-        .then(data =>{
+        .then(data => {
             setNome('');
             setIdade(0);
             setPeso(0);
             setAltura(0);
+            alert('Aluno cadastrado com sucesso!');
         })
-        .catch(erro => {
-            console.error('Erro', erro);
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao cadastrar aluno. Verifique o console para mais detalhes.');
         });
-        return (
-            <div>
-                <h2>Cadastrar Novo Produto</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Nome:
-                        <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
-                    </label>
-                    <label>
-                        Descrição:
-                        <input type="text" value={idade} onChange={e => setIdade(Number(e.target.value))} required />
-                    </label>
-                    <label>
-                        Preço:
-                        <input type="number" value={peso} onChange={e => setPeso(Number(e.target.value))} required />
-                    </label>
-                    <label>
-                        Quantidade:
-                        <input type="number" value={altura} onChange={e => setAltura(Number(e.target.value))} required />
-                    </label>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
-        );
-    };
+    }
+
+    return (
+        <div>
+            <h2>Cadastrar Novo Aluno</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Nome:
+                    <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
+                </label>
+                <label>
+                    Idade:
+                    <input type="number" value={idade} onChange={e => setIdade(Number(e.target.value))} required />
+                </label>
+                <label>
+                    Peso:
+                    <input type="number" value={peso} onChange={e => setPeso(Number(e.target.value))} required />
+                </label>
+                <label>
+                    Altura:
+                    <input type="number" value={altura} onChange={e => setAltura(Number(e.target.value))} required />
+                </label>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    );
 };
+
 export default CadastrarAluno;

@@ -1,13 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import CadastrarAluno from './Components/cadastrarAluno';
+import BuscarAlunos from './Components/buscarAluno';
 import './index.css';
 
 const App: React.FC = () => {
     return (
-      <div>
-          <h1 className="text-blue-500">Projeto base em React com TypeScript</h1>
-          <h1 className="text-blue-500">Projeto base em React com TypeScript</h1>
-          <h1 className="text-blue-500">Projeto base em React com TypeScript</h1>
-      </div>
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Buscar Aluno</Link>
+              </li>
+              <li>
+                <Link to="/cadastrar">Cadastrar Alunos</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path="/" element={<BuscarAlunos />} />
+            <Route path="/cadastro" element={<CadastrarAluno/>} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     );
 };
 

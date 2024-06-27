@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academia.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20240518035020_Piloto")]
-    partial class Piloto
+    [Migration("20240627024225_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.5");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
             modelBuilder.Entity("AcademiaAPI.Models.Aluno", b =>
                 {

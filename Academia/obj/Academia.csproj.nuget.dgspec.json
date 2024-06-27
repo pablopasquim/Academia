@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj": {}
+    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\academia\\Academia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj": {
+    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\academia\\Academia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\academia\\Academia.csproj",
         "projectName": "Academia",
-        "projectPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj",
+        "projectPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\academia\\Academia.csproj",
         "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\obj\\",
+        "outputPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\academia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,11 +47,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             }
           },
           "imports": [

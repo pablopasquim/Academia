@@ -4,8 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
+builder.Services.AddCors();
 var app = builder.Build();
 
+app.UseCors(c => {
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
 
 // http://localhost:5024/academia/alunos/cadastrar
 app.MapPost("/academia/alunos/cadastrar", ([FromBody] Aluno aluno, [FromServices] AppDataContext ctx) =>
@@ -16,7 +22,7 @@ app.MapPost("/academia/alunos/cadastrar", ([FromBody] Aluno aluno, [FromServices
     return Results.Ok("Aluno cadastrado com sucesso! " + aluno.Nome );
 });
 
-app.MapGet("/academia/alunos/buscar/", ([FromServices] AppDataContext ctx) =>
+app.MapGet("/academia/alunos/buscar", ([FromServices] AppDataContext ctx) =>
 {
     var alunos = ctx.Alunos.ToList();
 
@@ -42,6 +48,26 @@ app.MapDelete("/academia/alunos/delete/{id}", ([FromRoute] int id, [FromServices
 
     return Results.Ok("Aluno removido com sucesso! Nome: " + aluno.Nome );
 });
+
+app.MapPut("/academia/alunos/atualizar/{id}", ([FromRoute] int id, [FromBody] Aluno alunoAtualizado, [FromServices] AppDataContext ctx) =>
+{
+    var alunoExistente = ctx.Alunos.FirstOrDefault(a => a.Id == id);
+
+    if (alunoExistente == null)
+    {
+        return Results.NotFound("Erro");
+    }
+
+    alunoExistente.Nome = alunoAtualizado.Nome;
+    alunoExistente.Idade = alunoAtualizado.Idade;
+    alunoExistente.Altura = alunoAtualizado.Altura;
+    alunoExistente.Peso = alunoAtualizado.Peso;
+
+    ctx.SaveChanges();
+
+    return Results.Ok("Aluno atualizado com sucesso! ID: " + id);
+});
+
 
 // http://localhost:5024/academia/treinos/cadastrar
 app.MapPost("/academia/treinos/cadastrar", ([FromBody] Treino treino, [FromServices] AppDataContext ctx) =>
@@ -90,25 +116,6 @@ app.MapDelete("/academia/treinos/delete/{id}", ([FromRoute] int id, [FromService
     ctx.SaveChanges();
 
     return Results.Ok("Treino removido com sucesso! Nome: " + treino.Nome );
-});
-
-app.MapPut("/academia/alunos/atualizar/{id}", ([FromRoute] int id, [FromBody] Aluno alunoAtualizado, [FromServices] AppDataContext ctx) =>
-{
-    var alunoExistente = ctx.Alunos.FirstOrDefault(a => a.Id == id);
-
-    if (alunoExistente == null)
-    {
-        return Results.NotFound("Erro");
-    }
-
-    alunoExistente.Nome = alunoAtualizado.Nome;
-    alunoExistente.Idade = alunoAtualizado.Idade;
-    alunoExistente.Altura = alunoAtualizado.Altura;
-    alunoExistente.Peso = alunoAtualizado.Peso;
-
-    ctx.SaveChanges();
-
-    return Results.Ok("Aluno atualizado com sucesso! ID: " + id);
 });
 
 

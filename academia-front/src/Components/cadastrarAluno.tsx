@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-const CadastrarAluno: React.FC = () => {
+function CadastrarAluno(){
     const [nome, setNome] = useState<string>('');
     const [idade, setIdade] = useState<number>(0);
     const [peso, setPeso] = useState<number>(0);
     const [altura, setAltura] = useState<number>(0);
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    function handleSubmit(e: any) {
         e.preventDefault();
 
         const newAluno = {
@@ -16,7 +16,7 @@ const CadastrarAluno: React.FC = () => {
             altura
         };
 
-        fetch('http://localhost:5024/academia/alunos/cadastrar', {
+        fetch('http://localhost:5024/academia/alunos/cadastrar',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const CadastrarAluno: React.FC = () => {
                     Altura:
                     <input type="number" value={altura} onChange={e => setAltura(Number(e.target.value))} required />
                 </label>
-                <button type="submit">Cadastrar</button>
+                <button type="submit">Cadastro de Aluno</button>
             </form>
         </div>
     );

@@ -11,10 +11,10 @@ const App: React.FC = () => {
           <nav>
             <ul>
               <li>
-                <Link to="/">Buscar Aluno</Link>
+                <Link to="/">Listar Aluno</Link>
               </li>
               <li>
-                <Link to="/cadastrar">Cadastrar Alunos</Link>
+                <Link to="/cadastro">Cadastrar Alunos</Link>
               </li>
             </ul>
           </nav>

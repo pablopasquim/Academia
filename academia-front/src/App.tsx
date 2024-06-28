@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import CadastrarAluno from './Components/cadastrarAluno';
-import BuscarAlunos from './Components/buscarAluno';
 import './index.css';
+import BuscarAlunos from './Components/BuscarAlunos';
 
-const App: React.FC = () => {
+function App(){
     return (
       <BrowserRouter>
         <div>

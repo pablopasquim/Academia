@@ -22,16 +22,13 @@ app.MapPost("/academia/alunos/cadastrar", ([FromBody] Aluno aluno, [FromServices
     return Results.Ok("Aluno cadastrado com sucesso! " + aluno.Nome );
 });
 
-app.MapGet("/academia/alunos/buscar", ([FromServices] AppDataContext ctx) =>
+app.MapGet("/academia/alunos/listar", ([FromServices] AppDataContext ctx) =>
 {
-    var alunos = ctx.Alunos.ToList();
-
-    if (!alunos.Any())
+    if (ctx.Alunos.Any())
     {
-        return Results.NotFound("Nenhum aluno encontrado! ");
+        return Results.Ok(ctx.Alunos.ToList());
     }
-
-    return Results.Ok(alunos);
+    return Results.NotFound("Nenhum aluno encontrada");
 });
 
 app.MapDelete("/academia/alunos/delete/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>

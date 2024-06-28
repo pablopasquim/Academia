@@ -1,7 +1,7 @@
 export interface Aluno{
-    Id: number;
-    Nome: string;
-    Idade: number;
-    Peso: number;
-    Altura: number;
+    id: number;
+    nome: string;
+    idade: number;
+    peso: number;
+    altura: number;
 }

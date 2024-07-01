@@ -123,10 +123,6 @@ C:\Users\pablo\Desktop\Trabalho\Projeto A2\Academia\obj\Debug\net8.0\Academia.ge
 C:\Users\pablo\Desktop\Trabalho\Projeto A2\Academia\obj\Debug\net8.0\ref\Academia.dll
 C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\appsettings.json
-C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\React\academia-app\package-lock.json
-C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\React\academia-app\package.json
-C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\React\academia-app\public\manifest.json
-C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\React\academia-app\tsconfig.json
 C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\Academia.exe
 C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\Academia.deps.json
 C:\Users\pablo\OneDrive\Desktop\C#\Academia\Academia\bin\Debug\net8.0\Academia.runtimeconfig.json

@@ -26,7 +26,7 @@ const CadastroTreino: React.FC = () => {
 
     const fetchInstrutores = async () => {
       try {
-        const response = await axios.get('http://localhost:5024/academia/instrutores/listar');
+        const response = await axios.get('http://localhost:5024/academia/instrutores/buscar');
         setInstrutores(response.data);
       } catch (error) {
         console.error('Erro ao buscar instrutores:', error);
@@ -35,7 +35,7 @@ const CadastroTreino: React.FC = () => {
 
     const fetchEquipamentos = async () => {
       try {
-        const response = await axios.get('http://localhost:5024/academia/equipamentos/listar');
+        const response = await axios.get('http://localhost:5024/academia/equipamentos/buscar');
         setEquipamentos(response.data);
       } catch (error) {
         console.error('Erro ao buscar equipamentos:', error);
@@ -58,7 +58,11 @@ const CadastroTreino: React.FC = () => {
         descricao: descricaoTreino,
       });
       alert('Treino cadastrado com sucesso!');
-      navigate('/treinos');
+      setAlunoId('');
+      setInstrutorId('');
+      setEquipamentoId('');
+      setNomeTreino('');
+      setDescricaoTreino('');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Erro ao cadastrar treino:', error.response?.data || error.message);
@@ -152,7 +156,7 @@ const CadastroTreino: React.FC = () => {
               id="descricaoTreino"
               value={descricaoTreino}
               onChange={(e) => setDescricaoTreino(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:border-blue-500"
+              className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none fos:bordcuer-blue-500"
               rows={4}
               required
             />

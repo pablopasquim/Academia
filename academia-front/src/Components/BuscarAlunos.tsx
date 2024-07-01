@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Aluno } from '../Interface/Aluno';
 import axios from 'axios';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 
 function BuscarAlunos() {
@@ -27,7 +26,8 @@ function BuscarAlunos() {
         axios.delete(`http://localhost:5024/academia/alunos/delete/${id}`)
             .then(response => {
                 console.log("Aluno deletado com sucesso:", response);
-                carregarAlunos(); // Atualiza a lista após deletar
+                alert('Aluno deletado com sucesso!');
+                carregarAlunos(); 
             })
             .catch(error => {
                 console.error("Problema ao deletar o Aluno", error);
@@ -37,91 +37,45 @@ function BuscarAlunos() {
     }
 
     return (
-        <div className="m-4">
-            <h1 className="p-1 px-5 mx-20 bg-cinza-claro rounded-full font-mono text-lg text-center text-verde">Lista de Alunos cadastrados</h1>
-            <table className="m-7 border-2">
-                <thead className="border-2">
+        <div className="container mx-auto">
+            <h1 className="p-1 px-5 mx-20 bg-gray-200 rounded-full font-mono text-lg text-center text-green-600">Lista de Alunos cadastrados</h1>
+            <table className="w-full lg:w-4/5 xl:w-3/4 mt-8 mb-16 divide-y divide-gray-200 mx-auto">
+                <thead className="bg-gray-50">
                     <tr>
-                        <th className="font-semibold text-branco">Id</th>
-                        <th className="font-semibold text-branco">Nome</th>
-                        <th className="font-semibold text-branco">Idade</th>
-                        <th className="font-semibold text-branco">Peso</th>
-                        <th className="font-semibold text-branco">Altura</th>
-                        <th className="font-semibold text-branco">Ações</th>
-=======
-
-function BuscarAlunos(){
-    const [alunos, setAlunos] = useState<Aluno[]>([]);
-
-    console.log(alunos)
-
-    function carregarAlunos(){
-        axios.get('http://localhost:5024/academia/alunos/listar').then(response =>{
-            setAlunos(response.data)
-        }).catch(error => {
-            console.error("Erro ao buscar lista de Alunos!", error)
-        })
-    }
-
-    useEffect(() => {
-        carregarAlunos();
-        // fetch('http://localhost:5024/academia/alunos/buscar')
-        //     .then(response => {
-        //         console.log('Resposta da API:', response);
-        //         if (!response.ok) {
-        //             throw new Error('Erro na requisição: ' + response.statusText);
-        //         }
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log('Dados recebidos:', data);
-        //         setAluno(data);
-        //     })
-        //     .catch(error => {
-        //         console.error('Erro:', error);
-        //     });
-    }, []);
-    
-
-    return (
-        <div>
-            <h1>Lista de Alunos</h1>
-            <table border={1}>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Idade</th>
-                        <th>Peso</th>
-                        <th>Altura</th>
->>>>>>> 5f02c7b1b8ddd6b341310937777fb4b9443af6c6
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Id</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Nome</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Idade</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Peso</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Altura</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-200">
                     {alunos.map(aluno => (
                         <tr key={aluno.id}>
-                            <td>{aluno.id}</td>
-                            <td>{aluno.nome}</td>
-                            <td>{aluno.idade}</td>
-                            <td>{aluno.peso}</td>
-                            <td>{aluno.altura}</td>
-<<<<<<< HEAD
-                            <td className="flex justify-between items-center">
-                            <button onClick={() => deletar(aluno.id!)}>Deletar</button>
-                            <Link to={`/alterar/${aluno.id}`}><button>Alterar</button></Link>
+                            <td className="px-6 py-4 whitespace-nowrap">{aluno.id}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{aluno.nome}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{aluno.idade}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{aluno.peso}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{aluno.altura}</td>
+                            <td className="px-6 py-4 whitespace-nowrap flex justify-center items-center">
+                                <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded mr-2" onClick={() => deletar(aluno.id)}>Deletar</button>
+                                <Link to={`/alunos/atualizar/${aluno.id}`} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded">Alterar</Link>
                             </td>
-=======
->>>>>>> 5f02c7b1b8ddd6b341310937777fb4b9443af6c6
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <div className="flex justify-center mt-4">
+                <Link to="/cadastro-aluno" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-2">
+                    Cadastro de Aluno
+                </Link>
+                <Link to="/" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mx-2">
+                    Voltar para o Home
+                </Link>
+            </div>
         </div>
     );
 };
 
-<<<<<<< HEAD
 export default BuscarAlunos;
-=======
-export default BuscarAlunos;
->>>>>>> 5f02c7b1b8ddd6b341310937777fb4b9443af6c6

@@ -16,6 +16,7 @@ app.UseCors(c => {
 // http://localhost:5024/academia/alunos/cadastrar
 app.MapPost("/academia/alunos/cadastrar", ([FromBody] Aluno aluno, [FromServices] AppDataContext ctx) =>
 {
+        
     ctx.Alunos.Add(aluno);
     ctx.SaveChanges();
 
@@ -29,6 +30,18 @@ app.MapGet("/academia/alunos/listar", ([FromServices] AppDataContext ctx) =>
         return Results.Ok(ctx.Alunos.ToList());
     }
     return Results.NotFound("Nenhum aluno encontrada");
+});
+
+app.MapGet("/academia/alunos/buscar/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>
+{
+    Aluno? aluno = ctx.Alunos.FirstOrDefault(x => x.Id == id);
+
+    if (aluno is null)
+    {
+        return Results.NotFound("Aluno não encontrado!");
+    }
+
+    return Results.Ok(aluno);
 });
 
 app.MapDelete("/academia/alunos/delete/{id}", ([FromRoute] int id, [FromServices] AppDataContext ctx) =>

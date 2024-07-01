@@ -5,26 +5,22 @@ import { Link, useNavigate } from 'react-router-dom';
 function CadastrarEquipamento() {
   const navigate = useNavigate();
   const [nome, setNome] = useState('');
-  const [descricao, setDescricao] = useState('');
-  const [quantidade, setQuantidade] = useState('');
+  const [tipo, setTipo] = useState('');
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newEquipamento = {
       nome,
-      descricao,
-      quantidade: parseInt(quantidade)
+      tipo,
     };
 
     axios.post('http://localhost:5024/academia/equipamentos/cadastrar', newEquipamento)
       .then(response => {
         console.log(response);
         setNome('');
-        setDescricao('');
-        setQuantidade('');
+        setTipo('');
         alert("Equipamento Cadastrado");
-        navigate("/"); // Redireciona para a página inicial
       })
       .catch(error => {
         console.error("Problema ao cadastrar o Equipamento:", error);
@@ -51,27 +47,14 @@ function CadastrarEquipamento() {
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="descricao" className="font-semibold">
-              Descrição:
+            <label htmlFor="quantidade" className="font-semibold">
+              Tipo:
             </label>
             <input
               type="text"
-              id="descricao"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="flex flex-col mb-4">
-            <label htmlFor="quantidade" className="font-semibold">
-              Quantidade:
-            </label>
-            <input
-              type="number"
-              id="quantidade"
-              value={quantidade}
-              onChange={(e) => setQuantidade(e.target.value)}
+              id="tipo"
+              value={tipo}
+              onChange={(e) => setTipo(e.target.value)}
               className="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:border-blue-500"
               required
             />

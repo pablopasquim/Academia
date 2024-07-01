@@ -16,8 +16,11 @@ function CadastrarInstrutor() {
     };
 
     axios.post(`http://localhost:5024/academia/instrutores/cadastrar`, novoInstrutor)
-      .then(() => {
-        navigate("/pages/instrutor/listar");
+      .then(response => {
+        console.log(response)
+        setNome('');
+        setEspecialidade('');
+        alert("Instrutor Cadastrado com sucesso!");
       })
       .catch((error) => {
         console.error("Erro ao cadastrar instrutor:", error);

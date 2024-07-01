@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj": {}
+    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Academia\\academia\\Academia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj": {
+    "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Academia\\academia\\Academia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Academia\\academia\\Academia.csproj",
         "projectName": "Academia",
-        "projectPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\Academia.csproj",
+        "projectPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Academia\\academia\\Academia.csproj",
         "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Projeto\\Academia\\obj\\",
+        "outputPath": "C:\\Users\\pablo\\OneDrive\\Desktop\\C#\\Academia\\academia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config"
